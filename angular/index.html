@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="validationApp">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS Form Validation</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-messages/1.8.2/angular-messages.min.js"></script>
+    <script src="app.js"></script>
+</head>
+<body ng-controller="mainController">
+    <h1>AngularJS Form Validation</h1>
+    <form name="userForm" ng-submit="submitForm()" novalidate>
+        <div class="form-group" ng-class="{'has-error': userForm.name.$touched && userForm.name.$invalid}">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" ng-model="user.name" required>
+            <div ng-messages="userForm.name.$error" ng-if="userForm.name.$touched">
+                <div ng-message="required">Name is required.</div>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error': userForm.email.$touched && userForm.email.$invalid}">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" ng-model="user.email" required>
+            <div ng-messages="userForm.email.$error" ng-if="userForm.email.$touched">
+                <div ng-message="required">Email is required.</div>
+                <div ng-message="email">Invalid email address.</div>
+            </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error': userForm.phone.$touched && userForm.phone.$invalid}">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" ng-model="user.phone" ng-pattern="/^[0-9]{10}$/" required>
+            <div ng-messages="userForm.phone.$error" ng-if="userForm.phone.$touched">
+                <div ng-message="required">Phone number is required.</div>
+                <div ng-message="pattern">Phone number must be 10 digits.</div>
+            </div>
+        </div>
+        <button type="submit" class="btn" ng-disabled="userForm.$invalid">Submit</button>
+    </form>
+</body>
+</html>
