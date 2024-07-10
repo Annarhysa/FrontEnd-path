@@ -2,5 +2,6 @@
 node_modules
 package-lock.json
 app
+scrap
 
 __pycache__
