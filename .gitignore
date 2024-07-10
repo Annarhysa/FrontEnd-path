@@ -1,3 +1,6 @@
 .vscode
-server-side-nodejs/node_modules
-server-side-nodejs/package-lock.json
+node_modules
+package-lock.json
+app
+
+__pycache__
