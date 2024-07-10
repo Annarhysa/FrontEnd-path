@@ -1,1 +1,3 @@
 .vscode
+server-side-nodejs/node_modules
+server-side-nodejs/package-lock.json
