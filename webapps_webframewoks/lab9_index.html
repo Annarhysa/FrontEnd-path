@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angular and NodeJS</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-app>
+<h1>Form Validation Example</h1>
+<div ng-app>
+    <form name="myForm" action="/submit" method="post" novalidate>
+        <p>Enter your Name:
+            <input type="text" name="userName" ng-model="user.name" required>
+            <span style="color:red" ng-show="myForm.userName.$dirty && myForm.userName.$invalid">
+                <span ng-show="myForm.userName.$error.required">Name is required.</span>
+            </span>
+        </p>
+
+        <p>Enter your Email:
+            <input type="email" name="userEmail" ng-model="user.email" required>
+            <span style="color:red" ng-show="myForm.userEmail.$dirty && myForm.userEmail.$invalid">
+                <span ng-show="myForm.userEmail.$error.required">Email is required.</span>
+                <span ng-show="myForm.userEmail.$error.email">Invalid email address.</span>
+            </span>
+        </p>
+
+        <p>Enter your Number:
+            <input type="number" name="userNumber" ng-model="user.age" required>
+            <span style="color:red" ng-show="myForm.userAge.$dirty && myForm.userAge.$invalid">
+                <span ng-show="myForm.userAge.$error.required">Number is required.</span>
+                <span ng-show="myForm.userAge.$error.number">Invalid number.</span>
+            </span>
+        </p>
+
+        <!-- Submit Button -->
+        <p>
+            <button ng-disabled="myForm.$invalid">Submit</button>
+        </p>
+    </form>
+</div>
+
+<div id="errors"></div>
+
+<script>
+    document.querySelector('form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(e.target);
+        const formJSON = Object.fromEntries(formData.entries());
+
+        const response = await fetch('/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formJSON)
+        });
+
+        const result = await response.json();
+        const errorsDiv = document.getElementById('errors');
+        errorsDiv.innerHTML = '';
+
+        if (result.errors) {
+            result.errors.forEach(error => {
+                const errorElement = document.createElement('div');
+                errorElement.textContent = error.msg;
+                errorsDiv.appendChild(errorElement);
+            });
+        } else {
+            errorsDiv.textContent = 'Form submitted successfully!';
+        }
+    });
+</script>
+</body>
+</html>
