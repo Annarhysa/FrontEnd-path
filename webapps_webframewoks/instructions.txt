@@ -1,0 +1,3 @@
+npm init
+npm install all dependencies
+node <js file name>

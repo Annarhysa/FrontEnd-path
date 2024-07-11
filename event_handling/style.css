@@ -1,0 +1,97 @@
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+/* Page container styles */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Heading styles */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Event box styles */
+.event-box {
+    background-color: #fff;
+    border: 1px solid #000000;
+    padding: 20px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    text-align: center;
+    cursor: pointer;
+    width: 50%;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.event {
+    background-color: #fff;
+    border: 1px solid #b9bdf7;
+    color: #f0f0f0;
+    padding: 20px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    text-align: center;
+    cursor: pointer;
+    width: 50%;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.event-box:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-5px);
+}
+
+/* Select box styles */
+#selectBox {
+    width: 90%;
+    padding: 10px;
+    margin: 0 auto;
+    font-size: 16px;
+    border: 1px solid #dd8f8f;
+    background-color: #fff;
+    margin-bottom: 20px;
+    align-self: center;
+}
+
+#selectBox:focus {
+    outline: none;
+    border-color: #66afe9;
+    box-shadow: 0 0 5px #66afe9;
+}
+
+button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid #333;
+    color: #333;
+    background-color: #fff;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+button:hover {
+    background-color: #333;
+    color: #fff;
+    border-color: #333;
+}
+
